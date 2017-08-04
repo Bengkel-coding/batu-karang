@@ -13,7 +13,7 @@
         <div class = 'row'>
            <div class = 'col-md-12'>
 
-                    {!! webarq::buttonCreate() !!}
+                    {!! trinata::buttonCreate() !!}
                 
                 
                 <p>&nbsp;</p>

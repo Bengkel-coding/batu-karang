@@ -30,7 +30,7 @@ class CrudController extends TrinataController
     		
     		->addColumn('action',function($model){
                 $status = $model->status == 'y' ? true : false;
-    			return webarq::buttons($model->id , [] , $status);
+    			return trinata::buttons($model->id , [] , $status);
     		})
     		
     		->make(true);
