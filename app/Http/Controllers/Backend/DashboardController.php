@@ -49,27 +49,32 @@ class DashboardController extends TrinataController
 
 		
 
+		// $charts = [
+
+		//     'chart' => ['type' => 'column'],
+		//     'title' => ['text' => 'User Activities'],
+		//     'xAxis' => [
+		//         'categories' => $this->range('dates'),
+		//     ],
+		//     'credits' => [
+		//     	'enabled'	=> false,
+		//     ],
+		//     'yAxis' => [
+		//         'title' => [
+		//             'text' => 'Total'
+		//         ]
+		//     ],
+		//     'series' => [
+		//         [
+		//             'name' => 'User Activities',
+		//             'data' => $this->range('data'),
+		//         ],
+		//     ]
+		// ];
 		$charts = [
 
-		    'chart' => ['type' => 'column'],
-		    'title' => ['text' => 'User Activities'],
-		    'xAxis' => [
-		        'categories' => $this->range('dates'),
-		    ],
-		    'credits' => [
-		    	'enabled'	=> false,
-		    ],
-		    'yAxis' => [
-		        'title' => [
-		            'text' => 'Total'
-		        ]
-		    ],
-		    'series' => [
-		        [
-		            'name' => 'User Activities',
-		            'data' => $this->range('data'),
-		        ],
-		    ]
+		    'data' => implode(',', $this->range('data')),
+		    'dates' => implode('","', $this->range('dates')),
 		];
 
 		return $charts;
@@ -79,6 +84,7 @@ class DashboardController extends TrinataController
 	{	
 		$charts = $this->chart();
 		$last = UserActivity::orderBy('created_at','desc')->limit(5)->get();
+		// dd($charts);
 	   	return view('backend.dashboard' ,compact('charts','last'));
 	}
 }
